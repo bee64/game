@@ -167,7 +167,15 @@ int main() {
     bool running = true;
     while (running) {
         // Handle events here
+	SDL_Event event;
+	SDL_PollEvent( &event );
+
+	if (event.type == SDL_KEYUP) {
+		return 0;
+	}
+
 	SDL_PumpEvents();
+	// TODO: this prints, but only after the game exits. figure logging out
 	printf("hey");
         renderer.render();
     }
